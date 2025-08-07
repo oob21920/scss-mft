@@ -1,0 +1,33 @@
+
+@mixin respond-col($device) {
+  @if $device == desktop {
+    @media (min-width: 1000px) {
+      @content;
+    }
+  }
+  @else if $device == tablet {
+    @media (min-width: 576px) and (max-width: 999px) {
+      @content;
+    }
+  }
+  @else if $device == mobile {
+    @media (max-width: 575px) {
+      @content;
+    }
+  }
+}
+
+
+.col {
+  width: 100%; 
+
+  @include respond-col(mobile) {
+    width: 100%;
+  }
+  @include respond-col(tablet) {
+    width: 50%;
+  }
+  @include respond-col(desktop) {
+    width: 33.33%;
+  }
+}
